@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emprendimientos Universidad Regional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Fuente base */
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fdf6ec;
+      color: #222;
+      min-height: 100vh;
+    }
+    nav ul {
+            background-image: url(Images/tipico.jpg); width: 1513px; height: 50px;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        nav li {
+            display: inline-block;
+        }
+
+        nav a {
+            display: block;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 14px 25px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #eaa98b;
+        }
+
+        section {
+            padding: 2em;
+        }
+
+        h2 {
+            color: #8b4513;
+            border-bottom: 2px solid #d2b48c;
+            padding-bottom: 0.3em;
+        }
+
+    /* HEADER */
+    header {
+      background: #d88041; /* púrpura vibrante */
+      color: #000000;
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header img {
+      height: 80px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(255,255,255,0.4);
+      filter: drop-shadow(0 0 5px #fff);
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 1.2px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    /* Barra de navegación desplegable */
+    nav select {
+      background: #5e35b1;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(94, 53, 177, 0.6);
+      transition: background-color 0.3s ease;
+    }
+    nav select:hover {
+      background: #512da8;
+    }
+
+    /* CONTENEDOR GENERAL */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto 4rem;
+      padding: 0 1.5rem;
+    }
+
+    /* SECCIONES */
+    section {
+      margin-bottom: 3.5rem;
+    }
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #4527a0; /* un púrpura oscuro */
+      border-bottom: 3px solid #7e57c2;
+      padding-bottom: 0.3rem;
+      letter-spacing: 1px;
+    }
+
+    /* INFO SOBRE NOSOTROS, MISIÓN, VISIÓN */
+    .info-section {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-bottom: 3rem;
+    }
+    .info-card {
+      background: linear-gradient(135deg, #fceabb, #3e3e3c);
+      flex: 1 1 300px;
+      max-width: 350px;
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(255, 181, 0, 0.4);
+      text-align: center;
+      color: #4a2c00;
+      font-weight: 600;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      user-select: none;
+    }
+    .info-card img {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 1rem;
+      filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.15));
+      transition: filter 0.3s;
+    }
+    .info-card:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(255, 181, 0, 0.7);
+    }
+    .info-card:hover img {
+      filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.3));
+    }
+
+    /* CATÁLOGO */
+    .catalogo-titulo {
+      font-size: 2.4rem;
+      margin-bottom: 1.5rem;
+      color: #512da8;
+      text-align: center;
+      text-shadow: 1px 1px 2px #b39ddb;
+    }
+    .productos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.8rem;
+    }
+    .producto {
+      background: linear-gradient(135deg, #ffffff, #e3f2fd);
+      padding: 1.2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(81, 45, 168, 0.3);
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+    .producto:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(81, 45, 168, 0.6);
+    }
+    .producto img {
+      max-width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      border: 2px solid #673ab7;
+    }
+    .producto h3 {
+      margin-top: 0;
+      color: #311b92;
+    }
+    .precio {
+      font-weight: 700;
+      color: #388e3c;
+      font-size: 1.1rem;
+    }
+    .rebaja {
+      color: #d32f2f;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-left: 8px;
+      text-decoration: line-through;
+      opacity: 0.7;
+    }
+    .whatsapp {
+      display: inline-block;
+      margin-top: 0.8rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #25D366;
+      color: #fff;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.6);
+      transition: background-color 0.3s ease;
+    }
+    .whatsapp:hover {
+      background-color: #1ebe57;
+      box-shadow: 0 6px 20px rgba(29, 184, 81, 0.8);
+    }
+
+    /* COMENTARIOS */
+    .comentarios {
+      background: #fff8e1;
+      padding: 1.8rem 2rem;
+      border-radius: 20px;
+      box-shadow: 0 6px 25px rgba(255, 202, 40, 0.3);
+    }
+    .comentarios h2 {
+      color: #f57f17;
+      text-align: center;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 2px #ffecb3;
+    }
+    .comentario {
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid #ffe082;
+      padding-bottom: 0.6rem;
+      color: #5d4037;
+    }
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      margin-bottom: 1.3rem;
+      border-radius: 10px;
+      border: 2px solid #ffb300;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: border-color 0.3s ease;
+    }
+    textarea:focus, input[type="text"]:focus {
+      border-color: #ff6f00;
+      outline: none;
+    }
+    button {
+      background-color: #ff6f00;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: 15px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 6px 15px rgba(255, 111, 0, 0.5);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    button:hover {
+      background-color: #e65100;
+      box-shadow: 0 8px 22px rgba(230, 81, 0, 0.7);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .info-section {
+        flex-direction: column;
+        align-items: center;
+      }
+      .info-card {
+        max-width: 90%;
+      }
+      .productos-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 480px) {
+      .productos-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      header {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Images/Logo Panaderia.jpg" alt="Logo del Negocio" />
+    <h1>PANADERIA Y PASTELERIA LA SUPERIOR</h1>
+    <nav>
+      <select onchange="location = this.value;">
+        <option value="" disabled selected>Ir a...</option>
+        <option value="campus store.html">Campus Store</option>
+        <option value="cremopolis.html">Cremópolis</option>
+        <option value="aksa.html">Aksa</option>
+        <option value="kamardaya.html">Kamardaya</option>
+      </select>
+    </nav>
+  </header>
+   <nav aria-label="Navegación principal">
+        <ul>
+            <li><a href="#catalogo">Catálogo</a></li>
+            <li><a href="#mision">Misión</a></li>
+            <li><a href="#vision">Visión</a></li>
+            <li><a href="#comentarios">Comentarios</a></li>
+        </ul>
+    </nav>
+    <!-- CATÁLOGO DE PRODUCTOS -->
+    <section>
+      <h2 class="catalogo-titulo">Catálogo de Productos</h2>
+      <div class="productos-grid">
+
+        <article class="producto">
+          <img src="Images/champurrada.jpg" alt="Champurradas" />
+          <h3>Champurrada</h3>
+          <p>
+            <span class="precio">Q6.00</span>
+            <span class="rebaja">Q8.00</span>
+          </p>
+          <a href="https://wa.me/1234567890" class="whatsapp" target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+        </article>
+
+        <article class="producto">
+          <img src="Images/frances.jpg" alt="Producto frances" />
+          <h3>Fila De Frances</h3>
+          <p>
+            <span class="precio">Q3.00</span>
+            <span class="rebaja">Q4.00</span>
+          </p>
+          <a href="https://wa.me/0987654321" class="whatsapp" target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+        </article>
+
+        <article class="producto">
+          <img src="Images/pastel.jpg" alt="Producto pastel" />
+          <h3>Pateles Temáticos</h3>
+          <p>
+            <span class="precio">Q150.00</span>
+            <span class="rebaja">Q185.00</span>
+          </p>
+          <a href="https://wa.me/1122334455" class="whatsapp" target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+        </article>
+
+        <article class="producto">
+          <img src="Images/cupcakes.jpeg" alt="Producto patelitos" />
+          <h3>Cupcakes Temáticos</h3>
+          <p>
+            <span class="precio">Q8.00</span>
+            <span class="rebaja">Q12.00</span>
+          </p>
+          <a href="https://wa.me/2233445566" class="whatsapp" target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+        </article>
+
+        <article class="producto">
+          <img src="Images/pan dulce.jpeg" alt="Producto pan" />
+          <h3>Pan dulce</h3>
+          <p>
+            <span class="precio">5 panes * Q2.00</span>
+            <span class="rebaja">Q3.00</span>
+          </p>
+          <a href="https://wa.me/3344556677" class="whatsapp" target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+        </article>
+
+        <article class="producto">
+          <img src="Images/pastel2.webp" alt="Producto pastel" />
+          <h3>Pasteles Gastronomicos</h3>
+          <p>
+            <span class="precio">Q250.00</span>
+            <span class="rebaja">Q300.00</span>
+          </p>
+          <a href="https://wa.me/4455667788" class="whatsapp" target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+        </article>
+        <article class="producto">
+          <img src="Images/lengua.jpeg" alt="Producto lengua" />
+          <h3>Pan Lengua</h3>
+          <p>
+            <span class="precio">Q1.50</span>
+            <span class="rebaja">Q2.00</span>
+          </p>
+          <a href="https://wa.me/4455667788" class="whatsapp" target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+        </article>
+        <article class="producto">
+          <img src="Images/donas.jpg" alt="Producto donas" />
+          <h3>Donas</h3>
+          <p>
+            <span class="precio">Q5.00</span>
+            <span class="rebaja">Q7.00</span>
+          </p>
+          <a href="https://wa.me/4455667788" class="whatsapp" target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+        </article>
+        <article class="producto">
+          <img src="Images/magdalena.jpeg" alt="Producto magdalena" />
+          <h3>Magdalena</h3>
+          <p>
+            <span class="precio">Q35.00</span>
+            <span class="rebaja">Q40.00</span>
+          </p>
+          <a href="https://wa.me/4455667788" class="whatsapp" target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+        </article>
+        <article class="producto">
+          <img src="Images/miloja.jpg" alt="Producto miloja" />
+          <h3>Milhoja</h3>
+          <p>
+            <span class="precio">Q3.50</span>
+            <span class="rebaja">Q4.00</span>
+          </p>
+          <a href="https://wa.me/4455667788" class="whatsapp" target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+        </article>
+
+      </div>
+    </section>
+ <section id="mision">
+            <h2>Misión</h2>
+            <h3>Nuestra misión es ofrecer productos de panadería y pastelería que destaquen por su calidad superior, elaborados
+               cuidadosamente con ingredientes seleccionados y técnicas que combinan la tradición artesanal con procesos innovadores. 
+               Nos comprometemos a satisfacer los gustos, necesidades y expectativas de nuestros clientes a través de una atención
+                personalizada, cercana y cordial, que convierte cada visita en una experiencia memorable. Buscamos no solo deleitar
+                 a quienes nos eligen, sino también construir relaciones duraderas que impulsen la fidelización y contribuyan al 
+                 desarrollo sostenible y al posicionamiento de nuestra marca como un referente en el sector.</h3>
+        </section>
+
+        <section id="vision">
+            <h2>Visión</h2>
+            <h3>Ser reconocidos como una de las panaderías y pastelerías líderes en la región, distinguiéndonos por nuestra capacidad 
+              de innovar continuamente en sabores, presentaciones y experiencias, sin perder la esencia de la tradición artesanal. 
+              Aspiramos a convertirnos en un referente de calidad y creatividad en el rubro, destacando por la excelencia en el 
+              servicio al cliente, la calidez en la atención y el compromiso con la mejora constante. Nuestro objetivo es consolidar
+               una marca sólida, confiable y querida por la comunidad, que inspire confianza, impulse el desarrollo local y trascienda 
+               por su impacto positivo en el entorno.</h3>
+        </section>
+
+    <!-- SECCIÓN DE COMENTARIOS -->
+   <section id="comentarios">
+            <h2>Comentarios</h2>
+            <form id="formulario-comentario">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="comentario">Comentario:</label>
+                <textarea id="comentario" name="comentario" rows="4" required></textarea>
+
+                <button type="submit">Enviar Comentario</button>
+            </form>
+
+            <div id="lista-comentarios"></div>
+        </section>
+    </main>
+
+    <footer>
+        <center><p>&copy; 2025 Panadería y Pastelería La Superior. Todos los derechos reservados.</p></center>
+    </footer>
+
+    <script>
+        document.getElementById("formulario-comentario").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById("nombre").value.trim();
+            const comentario = document.getElementById("comentario").value.trim();
+
+            if (nombre && comentario) {
+                const listaComentarios = document.getElementById("lista-comentarios");
+
+                const nuevoComentario = document.createElement("div");
+                nuevoComentario.classList.add("comentario");
+
+                const ahora = new Date();
+                const hora = ahora.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+
+                nuevoComentario.innerHTML = `
+                    <strong>${nombre}</strong> <em>(${hora})</em><br>
+                    <p>${comentario}</p>
+                `;
+
+                listaComentarios.prepend(nuevoComentario);
+
+                document.getElementById("formulario-comentario").reset();
+            }
+        });
+    </script>
+</body>
+</html>
